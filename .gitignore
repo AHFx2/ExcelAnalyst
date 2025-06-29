@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ExcelAnalyst/Controllers/AnalyzersController.cs
+/ExcelAnalyst.Service/Anlyze/AnalyzerService.cs
+/ExcelAnalyst.Service/Anlyze/IAnalyzerService.cs
+/ExcelAnalyst.Domain/Entities/Analyst.cs
