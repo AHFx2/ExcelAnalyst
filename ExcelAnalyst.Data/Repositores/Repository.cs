@@ -1,9 +1,9 @@
 ﻿using System.Linq.Expressions;
-using ExcelAnalyst.Domain.Common.IRepository;
+using ExcelAnalyst.Domain.Common.IRepositores;
 using ExcelAnalyst.Repository.EntityFrameworkCore.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Academy.Repository.Repository
+namespace ExcelAnalyst.Repository.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {

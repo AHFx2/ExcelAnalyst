@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace ExcelAnalyst.Domain.Common.IRepository
+namespace ExcelAnalyst.Domain.Common.IRepositores
 {
     public interface IRepository<TEntity> where TEntity : class
     {

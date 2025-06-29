@@ -1,4 +1,5 @@
 ﻿using ExcelAnalyst.Domain.Identity;
+using ExcelAnalyst.Domain.JWT;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ namespace ExcelAnalyst.Repository.EntityFrameworkCore.Context
 
     public class AppDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
-       
+       public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         public AppDbContext()  { }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
-using ExcelAnalyst.Domain.Common.IRepository;
 using ExcelAnalyst.Domain.Common.IUnitOfWork;
 using ExcelAnalyst.Domain.Global;
-using ExcelAnalyst  .Repository.EntityFrameworkCore.Context;
-using Academy.Repository.Repository;
+using ExcelAnalyst.Repository.EntityFrameworkCore.Context;
+using ExcelAnalyst.Repository.Repository;
+using ExcelAnalyst.Domain.Common.IRepositores;
 
 namespace ExcelAnalyst.Repository.UnitOfWork
 {
