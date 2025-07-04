@@ -21,4 +21,8 @@
     <ProjectReference Include="..\ExcelAnalyst.Domain\ExcelAnalyst.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Anlyze\Validators\" />
+  </ItemGroup>
+
 </Project>

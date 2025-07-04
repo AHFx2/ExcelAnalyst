@@ -7,6 +7,8 @@ namespace ExcelAnalyst.Service.Objects.Users.Validator
     {
         public AddUserDTOValidator()
         {
+            RuleFor(u => u.FirstName).NotEmpty().MinimumLength(2).MaximumLength(50).WithMessage("First Name In Invalid Format");
+            RuleFor(u => u.FirstName).NotEmpty().MinimumLength(2).MaximumLength(50).WithMessage("Second Name In Invalid Format");
             RuleFor(u => u.UserName).NotEmpty().MinimumLength(3).MaximumLength(50);
             RuleFor(u => u.Password)
                 .NotEmpty().WithMessage("Password is required.")

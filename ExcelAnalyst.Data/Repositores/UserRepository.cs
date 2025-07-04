@@ -21,6 +21,9 @@ namespace ExcelAnalyst.Data.Repositores
             _context = context;
             _dbSet = _context.Users;
         }
+
+ 
+
         public async Task<Result<ApplicationUser>> GetByUserNameAsync(string userName)
         {
             if (string.IsNullOrEmpty(userName))

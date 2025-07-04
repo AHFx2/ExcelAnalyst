@@ -4,11 +4,14 @@ using ExcelAnalyst.Domain.Common.IRepositores;
 using ExcelAnalyst.Domain.Common.IUnitOfWork;
 using ExcelAnalyst.Domain.Identity;
 using ExcelAnalyst.Domain.JWTOptions;
+using ExcelAnalyst.Domain.Logger;
 using ExcelAnalyst.Repository.EntityFrameworkCore.Context;
 using ExcelAnalyst.Repository.UnitOfWork;
 using ExcelAnalyst.Service;
+using ExcelAnalyst.Service.Anlyze;
 using ExcelAnalyst.Service.Objects.Auth;
 using ExcelAnalyst.Service.Objects.JWT;
+using ExcelAnalyst.Service.Objects.Users;
 using ExcelAnalyst.Service.Objects.Users.Validator;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -42,9 +45,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("ExcelAnalystFrontend", policy =>
     {
-        policy.AllowAnyOrigin() 
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy.AllowAnyOrigin()
+          .AllowAnyHeader()
+          .AllowAnyMethod();
 
     });
 });
@@ -110,11 +113,16 @@ builder.Services.AddScoped<IJwtService, JwtService>();
 #endregion
 
 #region Dependency Injection Configurations
+builder.Services.AddLogging();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();  
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+builder.Services.AddScoped<IAnalystRepository, AnalystRepository>();
+builder.Services.AddScoped<IAnalyzerService, AnalyzerService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped(typeof(ExcelAnalyst.Domain.Logger.ILogger<>), typeof(ExcelAnalyst.Domain.Logger.Logger<>));
 #endregion
 
 

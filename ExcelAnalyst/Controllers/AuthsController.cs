@@ -1,5 +1,6 @@
 ﻿using ExcelAnalyst.Service.Objects.Auth;
 using ExcelAnalyst.Service.Objects.Users.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace ExcelAnalyst.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AuthsController : ControllerBase
     {
 
@@ -19,6 +21,7 @@ namespace ExcelAnalyst.Controllers
 
         [HttpPost]
         [Route("login")]
+        [AllowAnonymous]
         public async Task<ActionResult> LoginAsync(UserLoginDTO userLogin)
         {
             if (!ModelState.IsValid)
@@ -34,7 +37,7 @@ namespace ExcelAnalyst.Controllers
 
             if (result.IsFailure)
             {
-                return BadRequest(new { Message = result.Error.Message });
+                return BadRequest(new { message = result.Error.Message });
             }
 
             SetRefreshTokenInCookie(result.Value.RefreshToken, result.Value.RefreshTokenExpiration);
@@ -43,7 +46,16 @@ namespace ExcelAnalyst.Controllers
 
         }
 
+        [HttpPost("auth/logout")]
+        public async Task<IActionResult> Logout()
+        {
+            Response.Cookies.Delete("refreshToken");
+            return Ok();
+        }
+
+
         [HttpGet("refreshtoken")]
+        [AllowAnonymous]
         public async Task<ActionResult> RefreshTokenAsync()
         {
             var refreshToken = Request.Cookies["refreshToken"];
@@ -68,9 +80,9 @@ namespace ExcelAnalyst.Controllers
             {
                 HttpOnly = true,
                 Expires = expires.ToLocalTime(),
-                //Secure = true,
+                Secure = true,
                 IsEssential = true,
-                //SameSite = SameSiteMode.None
+                SameSite = SameSiteMode.None
             };
 
             Response.Cookies.Append("refreshToken", refreshToken, cookieOptions);

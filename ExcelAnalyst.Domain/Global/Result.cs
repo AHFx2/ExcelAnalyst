@@ -5,24 +5,24 @@
         public record General
         {
             public static Error None = new(string.Empty, string.Empty);
-            public static Error NullValue = new("Error.NullValue", "ادخل قيم صالحة");
-            public static Error NoResult = new("Error.NoResult", "لاتوجد نتائج");
-            public static Error FailedOperation = new("Error.FailedOperation", "خطأ في تنفيذ العملية.");
+            public static Error NullValue = new("Error.NullValue", "Invalid Input");
+            public static Error NoResult = new("Error.NoResult", "No Result");
+            public static Error FailedOperation = new("Error.FailedOperation", "Error Aqured In The Operation.");
         }
 
         public record EFCore
         {
-            public static Error NoChanges = new("EFCore.NoChanges", "لم يتم عمل اي تعديل");
-            public static Error FailedTransaction = new("EFCore.FailedTransaction", "خطا في السيرفر");
+            public static Error NoChanges = new("EFCore.NoChanges", "No Chage Made");
+            public static Error FailedTransaction = new("EFCore.FailedTransaction", "Error in server");
         }
 
         public record User
         {
-            public static Error EmailAlreadyExists = new("User.EmailAlreadyExists", "اسم المستخدم او الايميل موجود مسبقا");
-            public static Error CreationFailed = new("User.CreationFailed", "فشل في اتمام العملية");
-            public static Error InvalidCredentials = new("User.InvalidCredentials", "اسم المستخدم او كلمة المرور غير صحيحة");
-            public static Error AcountLocked = new("User.AccountLocked", "تم غلق حسابك رجاء تواصل مع الدعم");
-            public static Error AttempExceeded = new("User.AttemptExceeded", "لقد تم ادخال كلمة مرور فوق الحد, رجاء حاول لاحقا");
+            public static Error EmailAlreadyExists = new("User.EmailAlreadyExists", "Username Already Exists");
+            public static Error CreationFailed = new("User.CreationFailed", "Failed To Complate The Operation");
+            public static Error InvalidCredentials = new("User.InvalidCredentials", "Username Or Password Invalid");
+            public static Error AcountLocked = new("User.AccountLocked", "Your Acount Has been locked");
+            public static Error AttempExceeded = new("User.AttemptExceeded", "Your Trails Has Been Exceeded Try Later");
         }
 
     }

@@ -11,5 +11,6 @@ namespace ExcelAnalyst.Domain.Common.IRepositores
     public interface IUserRepository
     {
         Task<Result<ApplicationUser>> GetByUserNameAsync(string userName);
+    
     }
 }

@@ -31,7 +31,7 @@ namespace ExcelAnalyst.Service.Objects.Auth
             var existingUserResult = await _userRepository.GetByUserNameAsync(user.UserName);
 
             if (existingUserResult.IsFailure)
-                return Result.Failure<AuthModel>(existingUserResult.Error);
+                return Result.Failure<AuthModel>(Error.User.InvalidCredentials);
 
             var existingUser = existingUserResult.Value;
 
@@ -61,5 +61,7 @@ namespace ExcelAnalyst.Service.Objects.Auth
             if (string.IsNullOrEmpty(tokenString)) return Result.Failure<AuthModel>(Error.General.NullValue);
             return await _jwtService.RefreshTokenAsync(tokenString);
         }
+
+
     }
 }

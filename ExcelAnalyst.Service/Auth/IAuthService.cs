@@ -8,5 +8,6 @@ namespace ExcelAnalyst.Service.Objects.Auth
     {
         Task<Result<AuthModel>> LoginAsync(UserLoginDTO user);
         Task<Result<AuthModel>> RefreshTokenAsync(string tokenString);
+        
     }
 }
